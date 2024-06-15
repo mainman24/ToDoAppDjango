@@ -1,0 +1,5 @@
+<form action="{% url 'todoapps:delete_task' task.id %}" method="POST">
+	{% csrf_token %}
+	<p>Are you sure you want to delete {{ task }} ?</p>
+	<button name="submit">Submit</button>
+</form>

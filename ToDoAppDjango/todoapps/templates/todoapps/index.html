@@ -1,0 +1,19 @@
+<h1>To-Do</h1>
+<form action="{% url 'todoapps:index' %}" method='POST'>
+	{{ form.task_name }}
+	{% csrf_token %}
+	<button name="submit">Submit</button>
+	
+</form>
+{% for task in tasks %}
+	{% if task.completed %}
+		<p> <s> {{ task }} </s> </p>
+	{% else %}
+		<p> {{ task }} </p>
+	{% endif %}
+	<a href="{% url 'todoapps:update_task' task.id %}">Edit</a>
+	<a href="{% url 'todoapps:delete_task' task.id %}">Delete</a>
+	<!-- <form action="{% url 'todoapps:complete_task' task.id %}" method='POST'> -->
+		<a href="{% url 'todoapps:complete_task' task.id %}">Complete</a>	
+	<!-- </form> -->
+{% endfor %}

@@ -1,0 +1,5 @@
+<form action="{% url 'todoapps:update_task' task.id %}" method="POST">
+	{% csrf_token %}
+	{{form}}
+	<button name="submit">Submit</button>
+</form>
